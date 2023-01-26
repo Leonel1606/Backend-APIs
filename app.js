@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const app = express();
 const port = 3000
-
+const swaggerDoc = require('swagger-ui-express');
+const swaggerDocumentation = require('./hepler/documentation')
 app.use(bodyParser.json());
-
 
 const connectDB = require('./config/db');
 // Load Config
@@ -14,6 +14,8 @@ dotenv.config({path: './config/config.env'})
 connectDB();
 
 // Routes
+app.use('/documentation', swaggerDoc.serve)
+app.use('/documentation', swaggerDoc.setup(swaggerDocumentation));
 
 const userRoutes = require("./routes/userRoute");
 app.use('/', userRoutes);

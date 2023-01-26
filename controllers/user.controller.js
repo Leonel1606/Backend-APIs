@@ -86,8 +86,31 @@ const Login = async(req, res)=>{
 	})
 }
 
+//update messages
+
+const updateUser = (req, res) =>{
+    const user = {
+        userName: req.body.userName,
+        email: req.body.email,
+		password: req.body.password,
+        mobileNumber: req.body.mobileNumber,
+        birthYear: req.body.birthYear,
+		skillSet: req.body.skillSet,
+		is_active: req.body.is_active,
+
+    };
+    User.findByIdAndUpdate(req.params.id, { $set: user}, { new: true }, (err, data) => {
+        if(!err) {
+            res.status(200).json({code: 200, message: 'User profile updated successfull Updated Successfully', editUserProfile: data})
+        } else {
+            console.log(err);
+        }
+    });
+}
+
 module.exports = { 
 	addUser, 
 	getUsers,
-	Login
+	Login,
+	updateUser
 };

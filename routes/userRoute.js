@@ -1,7 +1,7 @@
 const express = require("express");
 // const defaultController = require("../controllers/defaultController");
 // const userValidation = require("../middleware/user.validator");
-const { addUser, getUsers, Login } = require("../controllers/user.controller");
+const { addUser, getUsers, Login, updateUser } = require("../controllers/user.controller");
 const router = express.Router();
 const User = require('../models/user')
 // const bcrypt = require('bcryptjs')
@@ -9,9 +9,9 @@ const User = require('../models/user')
 // router.get("/", defaultController);
 
 
-router.post("/addUser", addUser);
-router.get("/getUsers", getUsers);
-// router.post("/login", userLogin);
+router.post("/users", addUser);
+router.get("/users", getUsers);
+router.put("/user/update/:id", updateUser);
 
 router.post("/login", Login);
 

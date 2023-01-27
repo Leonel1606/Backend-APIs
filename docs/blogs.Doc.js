@@ -43,6 +43,11 @@ const listAllBlogs = {
 const newBlog = {
     tags:['Blogs'],
     description:"Create a new blog",
+    security: [
+        {
+          token: [],
+        },
+      ],
     requestBody:{
         content:{
             "multipart/form-data":{

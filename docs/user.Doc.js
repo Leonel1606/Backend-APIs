@@ -17,6 +17,11 @@ const user = [
 const listAllUsers = {
     tags: ['User'],
     description: "List of all Users",
+    security: [
+        {
+          token: [].splice(1),
+        },
+      ],
     responses: {
         200: {
             description: "Query OK",

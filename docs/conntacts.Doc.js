@@ -13,6 +13,11 @@ const message = [
 const listAllContacts = {
     tags:['Contacts'],
     description:"Get all messages",
+    security: [
+        {
+          token: [],
+        },
+      ],
     responses:{
         200:{
             description:"OK",
@@ -84,6 +89,11 @@ const saveMessage = {
 const getSingleMessage = {
     tags:['Contacts'],
     description:"get a single message",
+    security: [
+        {
+          token: [],
+        },
+      ],
     parameters:[
         {
             name:"id",
@@ -114,6 +124,11 @@ const getSingleMessage = {
 const deleteMessage = {
     tags:['Contacts'],
     description:"Delete a singlr message",
+    security: [
+        {
+          token: [],
+        },
+      ],
     parameters:[
         {
             name:"id",

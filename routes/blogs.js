@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const auth_admin = require('../middleware/adminAuthenticate')
 const auth_user = require('../middleware/userAuthenticate')
-
 const blogController = require('../controllers/blogsController');
+const blogsValidation = require("../middleware/blogsValidator");
+
 
 router.post('/Admin/blogs/new', auth_admin, blogController.uploadImg, blogController.newBlog);// for images 
 router.get('/Home/blogs' , blogController.getAllBlogs);

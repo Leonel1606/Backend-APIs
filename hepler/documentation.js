@@ -1,6 +1,9 @@
-const userRouteDoc = require("../routes/user.Doc");
-const blogsRouteDoc = require('../routes/blogs.Doc')
-const contactsRouteDoc = require('../routes/conntacts.Doc')
+const userRouteDoc = require("../docs/user.Doc");
+const blogsRouteDoc = require('../docs/blogs.Doc')
+const contactsRouteDoc = require('../docs/conntacts.Doc')
+const subsRouteDoc = require('../docs/subscribersDoc')
+const adminRouteDoc = require('../docs/adminDoc');
+
 
 const swaggerDocumentation = {
     openapi: "3.0.0",
@@ -13,10 +16,10 @@ const swaggerDocumentation = {
         securitySchemes: {
           token: {
             type: 'apiKey',
-            scheme: 'bearer',
+            scheme: 'Bearer',
             bearerFormat: 'JWT',
-            name:"token",
-            in:"header"
+            name: "token",
+            in: "headers"
           },
         },
     },
@@ -40,12 +43,22 @@ const swaggerDocumentation = {
             name: "Contacts",
             description: "Contact Me routes",
         },
+        {
+            name: "Subscribers",
+            description: "subscribers routes",
+        },
+        {
+            name: "Admin",
+            description: "Admin routes",
+        },
 
     ],
     paths: {
         ...userRouteDoc,
         ...blogsRouteDoc,
         ...contactsRouteDoc,
+        ...subsRouteDoc,
+        ...adminRouteDoc
     },
         };
 

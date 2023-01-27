@@ -30,11 +30,13 @@ const newBlog = (req, res) => {
             // save this object to database
             newBlog.save((err, data)=>{
                 if(err) return res.json({Error: err});
-                return res.json(data);
+                return res.json({
+                    message: "Blog post is Done",
+                    data});
             })        
         }else{
             if(err) return res.json(`Something went wrong, please try again. ${err}`);
-            return res.json({message:"Tea already exists"});
+            return res.json({message:"Blog already exists"});
         }
     })    
 };
@@ -48,7 +50,7 @@ const getAllBlogs = (req, res) => {
     })
 };
 
-//GET blog by id'.........................................
+//GET blog by id'..............
 const getOneBlog = (req, res) => {
     blogs.findById(req.params.id, (err, data) => {
         if(!err) {
